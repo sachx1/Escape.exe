@@ -13,8 +13,9 @@ public class lightSwitch : MonoBehaviour
 {
     //public Transform Spawnpoint;
     public GameObject light;
+    public GameObject light2;
     public GameObject smoke;
-    public GameObject text;
+    //public GameObject text;
     //public AudioClip audioClip;
     //public AudioSource audioSource;
     private int isOn = 0;
@@ -37,10 +38,11 @@ public class lightSwitch : MonoBehaviour
         actions.Add("ohn", Light);
         actions.Add("ahn", Light);
         actions.Add("awen", Light);
-        actions.Add("power off", LightOff);
+        //actions.Add("power off", LightOff);
+        light2.SetActive(false);
         light.SetActive(false);
         smoke.SetActive(false);
-        text.SetActive(true);
+        //text.SetActive(true);
         keywordRecognizer = new KeywordRecognizer(actions.Keys.ToArray());
         keywordRecognizer.OnPhraseRecognized += RecgonizedSpeech;
         keywordRecognizer.Start();
@@ -57,8 +59,9 @@ public class lightSwitch : MonoBehaviour
     {
         //Instantiate(Prefab, Spawnpoint.position, Spawnpoint.rotation);
         light.SetActive(true);
+        light2.SetActive(true);
         smoke.SetActive(true);
-        text.SetActive(false);
+        //text.SetActive(false);
         //audioSource.Play();
         on = true;
     }
@@ -67,7 +70,7 @@ public class lightSwitch : MonoBehaviour
     {
         light.SetActive(false);
         smoke.SetActive(false);
-        text.SetActive(true);
+        //text.SetActive(true);
         //audioSource.Stop();
         on = false;
 

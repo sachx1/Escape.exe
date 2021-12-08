@@ -11,6 +11,8 @@ public class puzzle2 : MonoBehaviour
     public GameObject Prefab;
     private KeywordRecognizer keywordRecognizer;
     private Dictionary<string, Action> actions = new Dictionary<string, Action>();
+    public AudioClip soundToPlay;
+    AudioSource audio;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +25,7 @@ public class puzzle2 : MonoBehaviour
         keywordRecognizer = new KeywordRecognizer(actions.Keys.ToArray());
         keywordRecognizer.OnPhraseRecognized += RecgonizedSpeech;
         keywordRecognizer.Start();
+        audio = GetComponent<AudioSource>();
 
     }
 
@@ -35,5 +38,6 @@ public class puzzle2 : MonoBehaviour
     private void Echo()
     {
         Instantiate(Prefab, Spawnpoint.position, Spawnpoint.rotation);
+        audio.PlayOneShot(soundToPlay);
     }
 }
